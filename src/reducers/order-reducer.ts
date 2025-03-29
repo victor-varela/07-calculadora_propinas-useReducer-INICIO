@@ -21,14 +21,29 @@ export const initialState: OrderState = {
 
 export const orderReducer = (state: OrderState = initialState, action: OrderActions) => {
   if (action.type === "add-item") {
+    let order: OrderItem[];
+
+    const itemExist = state.order.find(orderItem => orderItem.id === action.payload.item.id);
+    if (itemExist) {
+      order = state.order.map(orderItem =>
+        orderItem.id === action.payload.item.id ? { ...orderItem, quantity: orderItem.quantity + 1 } : orderItem
+      );
+    } else {
+      const newItem = { ...action.payload.item, quantity: 1 };
+      order = [...state.order, newItem];
+    }
     return {
       ...state,
+      order,
     };
   }
 
   if (action.type === "remove-item") {
+    const order = state.order.filter(item => item.id !== action.payload.id);
+
     return {
       ...state,
+      order,
     };
   }
 
