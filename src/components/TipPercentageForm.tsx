@@ -24,8 +24,6 @@ type TipPercentageFormProps = {
 };
 
 export default function TipPercentageForm({ dispatch, tip }: TipPercentageFormProps) {
-  console.log(tip);
-  
   return (
     <div>
       <h3 className="font-black text-2xl">Propina:</h3>

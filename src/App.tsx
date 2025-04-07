@@ -46,9 +46,9 @@ function App() {
                     dispatch={dispatch}
                   />
                   <OrderTotals 
-                    order={order}
-                    tip={tip}
-                    placeOrder={placeOrder}
+                    order={state.order}
+                    tip={state.tip}
+                    dispatch={dispatch}
                   />
               </>
             ) : (

@@ -51,6 +51,8 @@ export const orderReducer = (state: OrderState = initialState, action: OrderActi
   if (action.type === "place-order") {
     return {
       ...state,
+      order: [],
+      tip: 0
     };
   }
 
