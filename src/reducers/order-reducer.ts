@@ -7,18 +7,19 @@ export type OrderActions =
   | { type: "place-order" }
   | { type: "define-tip"; payload: { value: number } };
 
-// paso 3
+// paso 3 -> Aca se declaran tipos
 export type OrderState = {
   order: OrderItem[];
   tip: number;
 };
 
-// paso 2
+// paso 2 -> Aca se asignan valores
 export const initialState: OrderState = {
   order: [],
   tip: 0,
 };
 
+// paso 4
 export const orderReducer = (state: OrderState = initialState, action: OrderActions) => {
   if (action.type === "add-item") {
     let order: OrderItem[];
@@ -56,6 +57,7 @@ export const orderReducer = (state: OrderState = initialState, action: OrderActi
   if (action.type === "define-tip") {
     return {
       ...state,
+      tip: action.payload.value
     };
   }
 
