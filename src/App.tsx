@@ -9,7 +9,7 @@ import { initialState, orderReducer } from "./reducers/order-reducer";
 function App() {
   const [state, dispatch] = useReducer(orderReducer, initialState);
 
-  const headerRef = useRef<HTMLElement | null>(null);
+  const headerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (state.sent && headerRef.current) {
