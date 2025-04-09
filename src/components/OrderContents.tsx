@@ -1,5 +1,5 @@
 import { formatCurrency } from "../helpers"
-import { MenuItem, OrderItem } from "../types"
+import { OrderItem } from "../types"
 import type { OrderActions } from "../reducers/order-reducer"
 
 type OrderContentsProps = {

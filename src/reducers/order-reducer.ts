@@ -5,18 +5,21 @@ export type OrderActions =
   | { type: "add-item"; payload: { item: MenuItem } }
   | { type: "remove-item"; payload: { id: MenuItem["id"] } }
   | { type: "place-order" }
-  | { type: "define-tip"; payload: { value: number } };
+  | { type: "define-tip"; payload: { value: number } }
+  | {type: 'reset-sent'};
 
 // paso 3 -> Aca se declaran tipos
 export type OrderState = {
   order: OrderItem[];
   tip: number;
+  sent: boolean
 };
 
 // paso 2 -> Aca se asignan valores
 export const initialState: OrderState = {
   order: [],
   tip: 0,
+  sent: false
 };
 
 // paso 4
@@ -35,7 +38,7 @@ export const orderReducer = (state: OrderState = initialState, action: OrderActi
     }
     return {
       ...state,
-      order,
+      order
     };
   }
 
@@ -52,7 +55,8 @@ export const orderReducer = (state: OrderState = initialState, action: OrderActi
     return {
       ...state,
       order: [],
-      tip: 0
+      tip: 0,
+      sent: true
     };
   }
 
@@ -61,6 +65,13 @@ export const orderReducer = (state: OrderState = initialState, action: OrderActi
       ...state,
       tip: action.payload.value
     };
+  }
+
+  if (action.type === 'reset-sent'){
+    return{
+      ...state,
+      sent: false
+    }
   }
 
   return state;
